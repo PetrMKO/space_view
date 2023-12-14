@@ -1,21 +1,25 @@
 import React, {useState} from 'react';
 import {RouterProvider} from 'react-router-dom';
 import {router} from './router/config';
-import MainLayout from './layouts/MainLayouts/MainLayout';
 import {ThemeProvider} from 'styled-components';
 import {lightTheme} from './theme/lightTheme';
-import AuthPage from './pages/AuthPage/AuthPage';
+import {AuthContext} from './context/authContext';
 
 function App() {
-  const [isAuth] = useState();
+  const [isAuth, setIsAuth] = useState(false);
 
-  return (<ThemeProvider theme={lightTheme}>
-    <MainLayout>
-      {isAuth ?
-        <RouterProvider router={router}/> :
-        <AuthPage/>}
-    </MainLayout>)
-  </ThemeProvider>)
+  const authContext = {
+    isAuth: isAuth,
+    setIsAuth: setIsAuth
+  }
+
+  return (
+    <AuthContext.Provider value={authContext}>
+      <ThemeProvider theme={lightTheme}>
+        <RouterProvider router={router}/>
+      </ThemeProvider>
+    </AuthContext.Provider>
+  )
 }
 
 export default App;

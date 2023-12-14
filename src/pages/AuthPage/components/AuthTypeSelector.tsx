@@ -5,7 +5,6 @@ import {AuthTypes} from '../types';
 import {FC} from 'react';
 
 const SelectorWrapper = styled.div`
-  padding-bottom: 30%;
   height: 100%;
   width: 100%;
   display: flex;
@@ -14,6 +13,7 @@ const SelectorWrapper = styled.div`
   gap: 45px;
   box-sizing: border-box;
   justify-content: center;
+  margin-top: 30%;
 `
 
 type Props = {

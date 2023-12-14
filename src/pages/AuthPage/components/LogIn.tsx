@@ -1,9 +1,16 @@
 import Form from './Form/Form';
-import React from 'react';
+import React, {useContext} from 'react';
+import {AuthContext} from '../../../context/authContext';
 
 const LogIn = () => {
+  const {setIsAuth} = useContext(AuthContext)
+
+  const onSubmit = () =>{
+    setIsAuth(true)
+  }
+
   return (
-    <Form title={'Log In'} onSubmitClick={(login, password)=>console.log(login, password)}/>
+    <Form title={'Log In'} onSubmitClick={onSubmit}/>
   );
 };
 
