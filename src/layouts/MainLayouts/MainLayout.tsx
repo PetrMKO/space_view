@@ -1,17 +1,20 @@
 import React, {FC, useContext} from 'react';
-import {ButtonImg, Header, HeaderTitle, PageWrapper, StyledLink} from './styled';
+import {ButtonImg, Header, HeaderTitle, LogOutButton, PageWrapper, StyledLink, Wrapper} from './styled';
 import {AuthContext} from '../../context/authContext';
 import {Link, useOutlet} from 'react-router-dom';
 import Icon from '../../Icons/userIcon.png'
 import AuthPage from '../../pages/AuthPage/AuthPage';
 
 const MainLayout: FC = () => {
-  const { isAuth } = useContext(AuthContext)
+  const { user, setUser } = useContext(AuthContext)
   const outlet = useOutlet()
 
+  const logout = () =>{
+    setUser(null);
+  }
   return (
     <PageWrapper>
-      <Header isAuth={isAuth}>
+      <Header isAuth={!!user} id={"headerLink"}>
         <div/>
         <StyledLink to={'/'}>
           <HeaderTitle>
@@ -19,14 +22,17 @@ const MainLayout: FC = () => {
           </HeaderTitle>
         </StyledLink>
 
-        {isAuth &&
-            <Link to={'/account'}>
-                <ButtonImg src={Icon}/>
-            </Link>
+        {user &&
+            <Wrapper>
+                <Link to={'/account'}>
+                    <ButtonImg src={Icon}/>
+                </Link>
+                <LogOutButton onClick={logout}>Log out</LogOutButton>
+            </Wrapper>
         }
       </Header>
       {
-        isAuth
+        user
           ? (outlet)
           : <AuthPage/>
       }

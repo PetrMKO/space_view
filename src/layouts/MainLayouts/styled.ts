@@ -13,7 +13,7 @@ export const Header = styled.header<{isAuth: boolean}>`
   width: 100%;
   box-sizing: border-box;
   height: 95px;
-  background-color: ${({theme})=>theme.mainBackground};
+  background-color: ${({theme})=>theme.headerBackground};
   color: ${({theme})=>theme.headerText};
   display: flex;
   align-items: center;
@@ -23,6 +23,7 @@ export const Header = styled.header<{isAuth: boolean}>`
 
 export const HeaderTitle = styled.span`
   text-align: center;
+  color: ${({theme})=>theme.headerText};
   font-family: Inter, sans-serif;
   font-size: 48px;
   font-style: normal;
@@ -30,10 +31,37 @@ export const HeaderTitle = styled.span`
   line-height: normal;
 `
 
+export const LogOutButton = styled.button`
+  cursor: pointer;
+  position: absolute;
+  width: max-content;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 18px;
+  top: 100%;
+  right: 40px;
+  display: none;
+  border: none;
+  background-color: ${({theme})=>theme.mainBackground};
+  color: ${({theme})=>theme.mainText};
+  z-index: 1000;
+  &:hover {
+    display: block;
+  }
+`
+
+export const Wrapper = styled.div`
+  position: relative;
+  &:hover ${LogOutButton} {
+    display: block;
+  }
+`
+
 export const ButtonImg = styled.img`
   width: 73px;
   height: 73px;
   margin-right: 23px;
+  
 `
 
 export const StyledLink = styled(Link)`

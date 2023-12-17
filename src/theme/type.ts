@@ -1,10 +1,3 @@
-import {lightTheme} from './lightTheme';
+import {lightTheme} from './light';
 
 export type Theme = typeof lightTheme;
-
-// {
-//   mainText: string
-//   invertText: string
-//   mainBackground: string
-//   invertBackground: string
-// }

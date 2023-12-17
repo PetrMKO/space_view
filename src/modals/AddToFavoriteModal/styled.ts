@@ -14,6 +14,7 @@ export const ModalWrapper = styled.div`
 export const Text = styled.span`
   color: ${({theme})=>theme.invertText};
 
+  text-align: center;
   font-family: Inter, sans-serif;
   font-size: 24px;
   font-style: normal;
@@ -39,7 +40,6 @@ export const ButtonWrapper = styled.div`
 export const buttonFragment = css`
   padding: 14px 50px;
   border-radius: 30px;
-  color: #FFF;
   text-align: center;
   font-family: Inter, sans-serif;
   font-size: 24px;

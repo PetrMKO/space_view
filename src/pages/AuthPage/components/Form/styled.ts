@@ -19,9 +19,14 @@ export const Header = styled.span`
 
 export const LabelSpan = styled.span`
   margin-left: 20px;
+  color: ${({theme})=>theme.invertText};
 `
 
 export const submitButtonFragment = css({
   width: 'auto',
   padding: '20px 28px'
 })
+
+export const ErrorHint = styled.div`
+color: indianred;
+`

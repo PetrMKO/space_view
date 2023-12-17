@@ -11,6 +11,7 @@ export const Image = styled.img`
   width: 100%;
   border-radius: 10px;
   transition: all .2s;
+  cursor: pointer;
 
   &:hover{
     transform: scale(1.03);
