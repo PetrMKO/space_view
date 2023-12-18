@@ -3,8 +3,9 @@ import Form from './Form/Form';
 import {AuthContext} from '../../../context/authContext';
 import {useNavigate} from 'react-router-dom';
 import {userApi} from '../../../API/userApi';
+import {AuthWrapper} from '../styled';
 
-const SignIn = () => {
+const SignUp = () => {
   const { setUser } = useContext(AuthContext)
   const [error, setError] = useState<string>('')
   const navigate = useNavigate()
@@ -20,8 +21,11 @@ const SignIn = () => {
   }
 
   return (
-    <Form title={'Sign Up'} onSubmitClick={onSubmit} error={error} setError={setError}/>
+    <AuthWrapper>
+      <Form title={'Sign Up'} onSubmitClick={onSubmit} error={error} setError={setError}/>
+    </AuthWrapper>
+
   );
 };
 
-export default SignIn;
+export default SignUp;

@@ -9,7 +9,7 @@ export const PageWrapper = styled.div`
   color: ${({theme})=>theme.invertText};
 `
 
-export const Header = styled.header<{isAuth: boolean}>`
+export const Header = styled.header`
   width: 100%;
   box-sizing: border-box;
   height: 95px;
@@ -17,7 +17,7 @@ export const Header = styled.header<{isAuth: boolean}>`
   color: ${({theme})=>theme.headerText};
   display: flex;
   align-items: center;
-  justify-content: ${({isAuth})=>isAuth ? 'space-between' : 'center'};
+  justify-content:space-between;
   padding-left: 96px;
 `
 

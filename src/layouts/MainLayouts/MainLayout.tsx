@@ -3,18 +3,19 @@ import {ButtonImg, Header, HeaderTitle, LogOutButton, PageWrapper, StyledLink, W
 import {AuthContext} from '../../context/authContext';
 import {Link, useOutlet} from 'react-router-dom';
 import Icon from '../../Icons/userIcon.png'
-import AuthPage from '../../pages/AuthPage/AuthPage';
 
 const MainLayout: FC = () => {
   const { user, setUser } = useContext(AuthContext)
   const outlet = useOutlet()
+  console.log(user)
 
-  const logout = () =>{
+  const logout = () => {
     setUser(null);
   }
+
   return (
     <PageWrapper>
-      <Header isAuth={!!user} id={"headerLink"}>
+      <Header id={"headerLink"}>
         <div/>
         <StyledLink to={'/'}>
           <HeaderTitle>
@@ -22,20 +23,15 @@ const MainLayout: FC = () => {
           </HeaderTitle>
         </StyledLink>
 
-        {user &&
-            <Wrapper>
-                <Link to={'/account'}>
-                    <ButtonImg src={Icon}/>
-                </Link>
-                <LogOutButton onClick={logout}>Log out</LogOutButton>
-            </Wrapper>
-        }
+        <Wrapper>
+          <Link to={user ? 'account' : '/denied'}>
+            <ButtonImg src={Icon}/>
+          </Link>
+          {user && <LogOutButton onClick={logout}>Log out</LogOutButton>}
+        </Wrapper>
+
       </Header>
-      {
-        user
-          ? (outlet)
-          : <AuthPage/>
-      }
+      {outlet}
     </PageWrapper>
   );
 };

@@ -1,8 +1,9 @@
 import {Button} from '../../../components/Button/Button';
-import {buttonFragment} from '../styled';
+import {AuthWrapper, buttonFragment} from '../styled';
 import styled from 'styled-components';
 import {AuthTypes} from '../types';
 import {FC} from 'react';
+import {useNavigate} from 'react-router-dom';
 
 const SelectorWrapper = styled.div`
   height: 100%;
@@ -16,22 +17,22 @@ const SelectorWrapper = styled.div`
   margin-top: 30%;
 `
 
-type Props = {
-  setType: (type: AuthTypes) => void
-}
 
-const AuthTypeSelector:FC<Props> = ({setType}) => {
+const AuthTypeSelector: FC = () => {
+  const navigate = useNavigate();
 
   return (
-    <SelectorWrapper>
-      <Button fragment={buttonFragment} onClick={()=>setType('signIn')}>
-        Sign in
-      </Button>
+    <AuthWrapper>
+      <SelectorWrapper>
+        <Button fragment={buttonFragment} onClick={() => navigate('signup')}>
+          Sign in
+        </Button>
 
-      <Button fragment={buttonFragment} onClick={()=>setType('logIn')}>
-        Log in
-      </Button>
-    </SelectorWrapper>
+        <Button fragment={buttonFragment} onClick={() => navigate('login')}>
+          Log in
+        </Button>
+      </SelectorWrapper>
+    </AuthWrapper>
   );
 };
 
